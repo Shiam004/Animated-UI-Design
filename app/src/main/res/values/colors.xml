@@ -7,4 +7,6 @@
     <color name="Orange">#FF5722</color>
     <color name="Dark">#041730</color>
     <color name="White">#FFFFFF</color>
+    <color name="Black">#0E0000</color>
+    <color name="Red">#FC0000</color>
 </resources>

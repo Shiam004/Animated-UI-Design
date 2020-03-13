@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogIn"></activity>
+        <activity android:name=".OTP_Verification"></activity>
+        <activity android:name=".user_profile" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".LogIn" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity">
             <intent-filter>
