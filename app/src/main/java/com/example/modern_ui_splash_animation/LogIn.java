@@ -10,6 +10,7 @@ import android.text.BoringLayout;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.agrawalsuneet.dotsloader.loaders.AllianceLoader;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,6 +25,7 @@ public class LogIn extends AppCompatActivity {
 
     Button login_btn,sign_up;
     TextInputLayout username,password;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class LogIn extends AppCompatActivity {
 
 
 
+        progressBar = findViewById(R.id.progress_bar);
+
+        progressBar.setVisibility(View.GONE);
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -91,6 +96,8 @@ public class LogIn extends AppCompatActivity {
 
     public void LogIn(View view) {
 
+        progressBar.setVisibility(View.VISIBLE);
+
         if (!validatePassword()| !validateUsername()){
             return;
         }
@@ -131,7 +138,7 @@ public class LogIn extends AppCompatActivity {
                         String phonNoFromDB = dataSnapshot.child(userEnterdUsername).child("phone").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnterdUsername).child("email").getValue(String.class);
 
-                        Intent intent = new Intent(getApplicationContext(),user_profile.class);
+                        Intent intent = new Intent(getApplicationContext(),Dashboard.class);
                         intent.putExtra("name",nameFromDB);
                         intent.putExtra("username",usernameFromDB);
                         intent.putExtra("phone",phonNoFromDB);

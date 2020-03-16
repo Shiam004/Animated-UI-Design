@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+
+
+        <item
+            android:id="@+id/nav_walk"
+            android:icon="@drawable/ic_directions_walk_black_24dp"
+            android:title="Walk" />
+
+
+        <item
+            android:id="@+id/nav_bus"
+            android:icon="@drawable/ic_directions_bus_black_24dp"
+            android:title="Bus" />
+
+        <item
+
+            android:id="@+id/nav_ship"
+            android:icon="@drawable/ic_directions_boat_black_24dp"
+            android:title="Ship" />
+
+        <item
+            android:id="@+id/nav_plane"
+            android:icon="@drawable/ic_airplanemode_active_black_24dp"
+            android:title="Plane" />
+
+        <item
+            android:id="@+id/nav_train"
+            android:icon="@drawable/ic_train_black_24dp"
+            android:title="Train" />
+
+        <item
+            android:id="@+id/nav_car"
+            android:icon="@drawable/ic_directions_car_black_24dp"
+            android:title="Car" />
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/profile"
+            android:title="Profile" />
+
+    </group>
+
+
+
+
+
+</menu>
