@@ -139,7 +139,7 @@ public class OTP_Verification extends AppCompatActivity {
                     UserHelper userHelper = new UserHelper(name,username,uemail,phone,upassword);
                     reference.child(username).setValue(userHelper);
 
-                    intent = new Intent(getApplicationContext(),user_profile.class);
+                    intent = new Intent(getApplicationContext(),LogIn.class);
 
                     intent.putExtra("name",name);
                     intent.putExtra("username",username);

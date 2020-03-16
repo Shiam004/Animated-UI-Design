@@ -4,14 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class user_profile extends AppCompatActivity {
     TextInputLayout fullName,email,phoneNo,password;
     TextView fullNameLabel,usernameLabel;
+
+    String username,name,upassword,phone,uemail;
+
+    DatabaseReference reference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +39,8 @@ public class user_profile extends AppCompatActivity {
         fullNameLabel = findViewById(R.id.fullname_field);
         usernameLabel = findViewById(R.id.username_field);
 
+        reference = FirebaseDatabase.getInstance().getReference("users");
+
 
         showAllUserData();
 
@@ -38,11 +49,11 @@ public class user_profile extends AppCompatActivity {
     private void showAllUserData() {
         Intent intent = getIntent();
 
-        String username = intent.getStringExtra("username");
-        String name = intent.getStringExtra("name");
-        String phone = intent.getStringExtra("phone");
-        String upassword = intent.getStringExtra("pass");
-        String uemail = intent.getStringExtra("email");
+        username = intent.getStringExtra("username");
+        name = intent.getStringExtra("name");
+        phone = intent.getStringExtra("phone");
+        upassword = intent.getStringExtra("pass");
+        uemail = intent.getStringExtra("email");
 
         fullNameLabel.setText(name);
         usernameLabel.setText(username);
@@ -51,4 +62,45 @@ public class user_profile extends AppCompatActivity {
         phoneNo.getEditText().setText(phone);
         password.getEditText().setText(upassword);
     }
+    public void update(View view) {
+        if(isNameChanged() || isPasswordChanged()||isEmailChange()){
+            Toast.makeText(this, "Data has been updated. ", Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(this,"Data is same and can not be updated",Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    private boolean isPasswordChanged(){
+        if(!upassword.equals(password.getEditText().getText().toString()))
+        {
+            reference.child(username).child("pass").setValue(password.getEditText().getText().toString());
+            upassword=password.getEditText().getText().toString();
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean isNameChanged(){
+        if(!name.equals(fullName.getEditText().getText().toString())){
+            reference.child(username).child("name").setValue(fullName.getEditText().getText().toString());
+            name=fullName.getEditText().getText().toString();
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    private boolean isEmailChange(){
+        if(!uemail.equals(email.getEditText().getText().toString())){
+            reference.child(username).child("email").setValue(email.getEditText().getText().toString());
+            uemail=email.getEditText().getText().toString();
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+
 }
